@@ -1,0 +1,9 @@
+FROM registry.access.redhat.com/ubi7/ubi:latest
+
+RUN yum install -y httpd \
+ && yum clean all
+
+COPY * /var/www/html/
+
+ENTRYPOINT ["/usr/sbin/httpd"]
+CMD ["-D", "FOREGROUND"]
